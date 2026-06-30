@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VelvetMuse — Curated Luxury Edits</title>
+<meta name="description" content="VelvetMuse — a quiet-luxury edit of fashion, beauty and lifestyle finds, curated for Pinterest.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23F3E7DD'/%3E%3Ctext x='50' y='66' font-size='58' text-anchor='middle' fill='%23B8895F' font-family='Georgia,serif'%3EV%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FBF6EF;
+  --ivory:#FFFCF7;
+  --warm-white:#FAF4ED;
+  --beige:#F1E4D6;
+  --champagne:#E8D2B8;
+  --blush:#F2DCDD;
+  --blush-deep:#E6BFC4;
+  --taupe:#A8927F;
+  --taupe-dark:#7C6A5A;
+  --ink:#3A2E27;
+  --ink-soft:#6B5C50;
+  --gold:#B8895F;
+  --gold-light:#D8B98C;
+  --line:#E7DACB;
+  --shadow: 0 10px 40px -12px rgba(122,98,70,0.25);
+  --shadow-soft: 0 4px 18px -6px rgba(122,98,70,0.18);
+  --radius:18px;
+  --serif:'Cormorant Garamond', serif;
+  --display:'Marcellus', serif;
+  --sans:'Jost', sans-serif;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  background:var(--cream);
+  color:var(--ink);
+  font-weight:300;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+a{color:inherit; text-decoration:none;}
+img{max-width:100%; display:block;}
+button{font-family:inherit; cursor:pointer; border:none; background:none;}
+::selection{background:var(--blush-deep); color:var(--ink);}
+
+.eyebrow{
+  font-family:var(--sans); letter-spacing:.22em; text-transform:uppercase;
+  font-size:.7rem; color:var(--gold); font-weight:500;
+}
+.section-title{
+  font-family:var(--display); font-size:clamp(1.8rem,3vw,2.6rem);
+  font-weight:400; color:var(--ink); letter-spacing:.01em;
+}
+.section-sub{
+  font-family:var(--serif); font-size:1.05rem; color:var(--ink-soft); font-style:italic; max-width:560px;
+}
+.section-head{ text-align:center; max-width:680px; margin:0 auto 3rem; display:flex; flex-direction:column; gap:.6rem; align-items:center;}
+.wrap{max-width:1280px; margin:0 auto; padding:0 6vw;}
+
+/* ===== Loading overlay ===== */
+#loader{position:fixed; inset:0; background:var(--cream); z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:1rem; transition:opacity .6s ease, visibility .6s;}
+#loader.hide{opacity:0; visibility:hidden;}
+.loader-mark{font-family:var(--display); font-size:2.4rem; color:var(--gold); letter-spacing:.1em; position:relative;}
+.loader-line{width:140px; height:1px; background:var(--line); position:relative; overflow:hidden;}
+.loader-line::after{content:''; position:absolute; left:-40%; top:0; height:100%; width:40%; background:var(--gold); animation:loadbar 1.1s ease-in-out infinite;}
+@keyframes loadbar{0%{left:-40%;}50%{left:60%;}100%{left:120%;}}
+
+/* ===== Top utility bar ===== */
+.utility-bar{background:var(--ink); color:var(--champagne); text-align:center; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; padding:.5rem 1rem;}
+
+/* ===== Nav ===== */
+header{position:sticky; top:0; z-index:500; background:rgba(251,246,239,0.88); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); transition:box-shadow .3s;}
+header.scrolled{box-shadow:0 6px 24px -10px rgba(122,98,70,.25);}
+.nav{display:flex; align-items:center; justify-content:space-between; padding:1.1rem 6vw; gap:1.5rem;}
+.logo{display:flex; align-items:center; gap:.6rem; cursor:pointer;}
+.logo-mark{width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,var(--gold-light),var(--gold)); display:flex; align-items:center; justify-content:center; font-family:var(--display); color:var(--ivory); font-size:1.1rem; box-shadow:var(--shadow-soft);}
+.logo-text{font-family:var(--display); font-size:1.5rem; letter-spacing:.04em; color:var(--ink);}
+.logo-text span{color:var(--gold);}
+nav.main-links{display:flex; gap:2rem; align-items:center;}
+nav.main-links button{font-size:.82rem; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-soft); position:relative; padding:.3rem 0; transition:color .25s;}
+nav.main-links button::after{content:''; position:absolute; left:0; bottom:-3px; width:0; height:1px; background:var(--gold); transition:width .3s;}
+nav.main-links button:hover{color:var(--ink);}
+nav.main-links button:hover::after{width:100%;}
+.nav-actions{display:flex; align-items:center; gap:1.1rem;}
+.icon-btn{width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--warm-white); border:1px solid var(--line); transition:all .25s; font-size:1rem; color:var(--ink-soft); position:relative;}
+.icon-btn:hover{background:var(--blush); color:var(--ink); transform:translateY(-2px);}
+.cart-count{position:absolute; top:-4px; right:-4px; background:var(--gold); color:#fff; font-size:.6rem; width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center;}
+.hamburger{display:none;}
+
+/* ===== Breadcrumb ===== */
+.breadcrumb{font-size:.78rem; color:var(--ink-soft); padding:1.1rem 6vw .3rem; letter-spacing:.03em;}
+.breadcrumb span{cursor:pointer;}
+.breadcrumb span:hover{color:var(--gold);}
+.breadcrumb .sep{margin:0 .4rem; color:var(--taupe);}
+
+/* ===== Hero ===== */
+.hero{position:relative; padding:5rem 6vw 6rem; display:grid; grid-template-columns:1.1fr .9fr; gap:3rem; align-items:center; overflow:hidden;}
+.hero::before{content:''; position:absolute; top:-20%; right:-10%; width:480px; height:480px; background:radial-gradient(circle,var(--blush) 0%, transparent 70%); z-index:0;}
+.hero-copy{position:relative; z-index:1;}
+.hero h1{font-family:var(--display); font-size:clamp(2.6rem,5.4vw,4.6rem); line-height:1.08; color:var(--ink); margin:.7rem 0 1.2rem; font-weight:400;}
+.hero h1 em{font-style:italic; font-family:var(--serif); color:var(--gold); font-weight:500;}
+.hero p{font-family:var(--serif); font-size:1.18rem; color:var(--ink-soft); max-width:480px; margin-bottom:2rem; font-style:italic;}
+.btn{display:inline-flex; align-items:center; gap:.5rem; padding:.95rem 2.1rem; border-radius:999px; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; transition:all .3s; }
+.btn-primary{background:var(--ink); color:var(--ivory);}
+.btn-primary:hover{background:var(--gold); transform:translateY(-2px); box-shadow:var(--shadow);}
+.btn-outline{background:transparent; border:1px solid var(--ink); color:var(--ink);}
+.btn-outline:hover{background:var(--ink); color:var(--ivory);}
+.hero-actions{display:flex; gap:1rem; flex-wrap:wrap;}
+.hero-visual{position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:1rem;}
+.hero-visual .tile{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); position:relative;}
+.hero-visual .tile img{height:100%; width:100%; object-fit:cover; transition:transform .6s ease;}
+.hero-visual .tile:hover img{transform:scale(1.06);}
+.hero-visual .tall{grid-row:span 2; height:430px;}
+.hero-visual .short{height:205px;}
+
+/* ===== Marquee strip ===== */
+.marquee{background:var(--ink); overflow:hidden; padding:.9rem 0;}
+.marquee-track{display:flex; gap:3rem; white-space:nowrap; animation:scroll 28s linear infinite; width:max-content;}
+.marquee-track span{color:var(--champagne); font-family:var(--display); font-size:.95rem; letter-spacing:.08em;}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ===== Section generic ===== */
+section{padding:5.5rem 0;}
+section.tight{padding:3.5rem 0;}
+
+/* category grid */
+.cat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem;}
+.cat-card{position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:3/4; cursor:pointer; box-shadow:var(--shadow-soft); transition:transform .4s ease, box-shadow .4s ease;}
+.cat-card:hover{transform:translateY(-8px); box-shadow:var(--shadow);}
+.cat-card img{width:100%; height:100%; object-fit:cover; transition:transform .7s ease;}
+.cat-card:hover img{transform:scale(1.08);}
+.cat-card .overlay{position:absolute; inset:0; background:linear-gradient(0deg, rgba(58,46,39,.78) 0%, rgba(58,46,39,0) 55%);}
+.cat-card .label{position:absolute; left:0; right:0; bottom:0; padding:1.4rem; color:#fff;}
+.cat-card .label .name{font-family:var(--display); font-size:1.4rem;}
+.cat-card .label .count{font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--champagne); margin-top:.2rem;}
+
+/* product card */
+.product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1.7rem;}
+.product-grid.cols-3{grid-template-columns:repeat(3,1fr);}
+.product-card{background:var(--ivory); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-soft); transition:transform .35s ease, box-shadow .35s ease; cursor:pointer; display:flex; flex-direction:column; border:1px solid var(--line);}
+.product-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
+.product-media{position:relative; aspect-ratio:3/4; overflow:hidden; background:var(--beige);}
+.product-media img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
+.product-card:hover .product-media img{transform:scale(1.07);}
+.badge-row{position:absolute; top:.7rem; left:.7rem; right:.7rem; display:flex; flex-wrap:wrap; gap:.35rem;}
+.badge{font-size:.62rem; letter-spacing:.06em; text-transform:uppercase; padding:.3rem .6rem; border-radius:999px; backdrop-filter:blur(4px); font-weight:500;}
+.badge.sale{background:rgba(230,191,196,.92); color:#7A2E36;}
+.badge.discount{background:rgba(58,46,39,.85); color:#fff;}
+.badge.bestseller{background:rgba(184,137,95,.92); color:#fff;}
+.badge.trending{background:rgba(255,255,255,.9); color:var(--ink);}
+.badge.editors{background:rgba(58,46,39,.9); color:var(--gold-light);}
+.badge.luxury{background:rgba(216,185,140,.95); color:#4a3a26;}
+.badge.new{background:rgba(241,228,214,.95); color:var(--ink);}
+.pin-save{position:absolute; bottom:.7rem; right:.7rem; background:#E60023; color:#fff; font-size:.68rem; padding:.45rem .8rem; border-radius:999px; display:flex; align-items:center; gap:.3rem; opacity:0; transform:translateY(6px); transition:all .3s; font-weight:500;}
+.product-card:hover .pin-save{opacity:1; transform:translateY(0);}
+.wish-btn{position:absolute; top:.7rem; right:.7rem; width:30px; height:30px; border-radius:50%; background:rgba(255,255,255,.92); display:flex; align-items:center; justify-content:center; font-size:.85rem; transition:all .25s; z-index:2;}
+.wish-btn.active, .wish-btn:hover{background:var(--blush-deep);}
+.product-info{padding:1.1rem 1.2rem 1.3rem; display:flex; flex-direction:column; gap:.4rem; flex:1;}
+.product-cat{font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold);}
+.product-title{font-family:var(--display); font-size:1.02rem; color:var(--ink); line-height:1.3;}
+.product-desc{font-size:.8rem; color:var(--ink-soft); font-family:var(--serif); font-style:italic;}
+.price-row{display:flex; align-items:center; gap:.55rem; margin-top:.3rem;}
+.price{font-family:var(--display); font-size:1.05rem; color:var(--ink);}
+.price-old{font-size:.82rem; color:var(--taupe); text-decoration:line-through;}
+.shop-btn{margin-top:.6rem; width:100%; padding:.65rem; border-radius:999px; border:1px solid var(--ink); font-size:.7rem; letter-spacing:.09em; text-transform:uppercase; text-align:center; transition:all .25s;}
+.shop-btn:hover{background:var(--ink); color:#fff;}
+
+/* tabs */
+.tab-row{display:flex; justify-content:center; gap:.6rem; flex-wrap:wrap; margin-bottom:2.6rem;}
+.tab{padding:.55rem 1.3rem; border-radius:999px; font-size:.74rem; letter-spacing:.07em; text-transform:uppercase; border:1px solid var(--line); color:var(--ink-soft); transition:all .25s; background:var(--ivory);}
+.tab.active, .tab:hover{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+/* CTA banner */
+.cta-banner{background:linear-gradient(120deg,var(--beige),var(--blush)); border-radius:28px; padding:4rem 4vw; text-align:center; margin:0 6vw; position:relative; overflow:hidden;}
+.cta-banner h2{font-family:var(--display); font-size:clamp(1.8rem,3.4vw,2.8rem); margin-bottom:.8rem;}
+.cta-banner p{font-family:var(--serif); font-style:italic; color:var(--ink-soft); margin-bottom:1.6rem;}
+
+/* blog */
+.blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:2rem;}
+.blog-card{background:var(--ivory); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-soft); transition:transform .35s; cursor:pointer; border:1px solid var(--line);}
+.blog-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
+.blog-media{aspect-ratio:4/3; overflow:hidden;}
+.blog-media img{width:100%; height:100%; object-fit:cover; transition:transform .6s;}
+.blog-card:hover .blog-media img{transform:scale(1.07);}
+.blog-info{padding:1.4rem 1.5rem 1.7rem;}
+.blog-cat{font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold);}
+.blog-title{font-family:var(--display); font-size:1.25rem; margin:.5rem 0 .5rem;}
+.blog-excerpt{font-size:.85rem; color:var(--ink-soft); font-family:var(--serif); font-style:italic;}
+.blog-meta{margin-top:.9rem; font-size:.72rem; color:var(--taupe); letter-spacing:.04em;}
+
+/* testimonials */
+.testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.8rem;}
+.testi-card{background:var(--ivory); border:1px solid var(--line); border-radius:var(--radius); padding:2rem 1.8rem; box-shadow:var(--shadow-soft);}
+.stars{color:var(--gold); letter-spacing:.15em; margin-bottom:.8rem;}
+.testi-text{font-family:var(--serif); font-style:italic; color:var(--ink-soft); font-size:1.02rem; margin-bottom:1.1rem;}
+.testi-name{font-family:var(--display); font-size:.95rem;}
+.testi-role{font-size:.72rem; color:var(--taupe); text-transform:uppercase; letter-spacing:.08em;}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--line); padding:1.3rem 0;}
+.faq-q{display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-family:var(--display); font-size:1.08rem;}
+.faq-q .plus{transition:transform .3s; color:var(--gold); font-size:1.3rem;}
+.faq-item.open .plus{transform:rotate(45deg);}
+.faq-a{max-height:0; overflow:hidden; transition:max-height .4s ease; font-family:var(--serif); font-style:italic; color:var(--ink-soft); font-size:.95rem;}
+.faq-item.open .faq-a{max-height:200px; padding-top:.8rem;}
+
+/* newsletter */
+.newsletter{background:var(--ink); color:var(--ivory); border-radius:28px; padding:4rem 4vw; text-align:center; margin:0 6vw;}
+.newsletter .section-sub{color:var(--champagne); margin:0 auto 1.6rem;}
+.newsletter h2{font-family:var(--display); font-size:clamp(1.8rem,3.2vw,2.6rem); margin-bottom:.6rem;}
+.nl-form{display:flex; justify-content:center; gap:.7rem; max-width:480px; margin:0 auto; flex-wrap:wrap;}
+.nl-form input{flex:1; min-width:220px; padding:.9rem 1.3rem; border-radius:999px; border:1px solid rgba(255,255,255,.25); background:rgba(255,255,255,.06); color:#fff; font-family:inherit;}
+.nl-form input::placeholder{color:rgba(255,255,255,.5);}
+.nl-form .btn-primary{background:var(--gold);}
+.nl-form .btn-primary:hover{background:var(--gold-light);}
+
+/* footer */
+footer{background:var(--warm-white); border-top:1px solid var(--line); padding:4.5rem 6vw 2rem;}
+.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1.1fr; gap:2.5rem; padding-bottom:3rem;}
+.footer-col h4{font-family:var(--display); font-size:1rem; margin-bottom:1.1rem; color:var(--ink);}
+.footer-col a, .footer-col p{display:block; font-size:.85rem; color:var(--ink-soft); margin-bottom:.65rem; transition:color .2s;}
+.footer-col a:hover{color:var(--gold);}
+.footer-brand p{font-family:var(--serif); font-style:italic; color:var(--ink-soft); font-size:.95rem; max-width:280px;}
+.social-row{display:flex; gap:.7rem; margin-top:1rem;}
+.footer-bottom{border-top:1px solid var(--line); padding-top:1.6rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-size:.75rem; color:var(--taupe);}
+
+/* back to top */
+.totop{position:fixed; bottom:1.6rem; right:1.6rem; width:46px; height:46px; border-radius:50%; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow); z-index:400; opacity:0; pointer-events:none; transition:all .35s; font-size:1.1rem;}
+.totop.show{opacity:1; pointer-events:auto;}
+.totop:hover{background:var(--gold);}
+
+/* cookie */
+.cookie{position:fixed; bottom:0; left:0; right:0; background:var(--ink); color:var(--ivory); padding:1rem 6vw; display:flex; justify-content:center; align-items:center; gap:1.5rem; flex-wrap:wrap; z-index:600; transform:translateY(100%); transition:transform .5s ease;}
+.cookie.show{transform:translateY(0);}
+.cookie p{font-size:.82rem; max-width:560px; color:var(--champagne);}
+.cookie .btn-primary{background:var(--gold); padding:.65rem 1.5rem;}
+
+/* search overlay */
+.search-overlay{position:fixed; inset:0; background:rgba(58,46,39,.55); backdrop-filter:blur(4px); z-index:700; display:flex; align-items:flex-start; justify-content:center; padding-top:9vh; opacity:0; pointer-events:none; transition:opacity .3s;}
+.search-overlay.show{opacity:1; pointer-events:auto;}
+.search-box{background:var(--ivory); border-radius:20px; width:min(680px,90vw); padding:1.6rem; box-shadow:var(--shadow); max-height:78vh; overflow-y:auto;}
+.search-box input{width:100%; padding:1rem 1.3rem; border-radius:999px; border:1px solid var(--line); background:var(--cream); font-family:var(--serif); font-size:1.05rem; font-style:italic;}
+.search-results{margin-top:1.2rem; display:flex; flex-direction:column; gap:.2rem;}
+.search-result-item{display:flex; align-items:center; gap:1rem; padding:.7rem .5rem; border-radius:12px; transition:background .2s; cursor:pointer;}
+.search-result-item:hover{background:var(--blush);}
+.search-result-item img{width:50px; height:62px; object-fit:cover; border-radius:8px;}
+.sr-title{font-family:var(--display); font-size:.92rem;}
+.sr-cat{font-size:.7rem; color:var(--taupe); text-transform:uppercase;}
+.search-close{position:absolute; top:1.5rem; right:6vw; color:#fff; font-size:1.6rem;}
+
+/* filter bar */
+.filter-bar{display:flex; flex-wrap:wrap; gap:.8rem; align-items:center; justify-content:space-between; margin-bottom:2.4rem; padding:1.1rem 1.4rem; background:var(--ivory); border:1px solid var(--line); border-radius:16px;}
+.filter-bar select{padding:.55rem 1rem; border-radius:999px; border:1px solid var(--line); background:var(--cream); font-family:var(--sans); font-size:.78rem; color:var(--ink-soft);}
+.subcat-chip-row{display:flex; gap:.6rem; flex-wrap:wrap; margin-bottom:2.6rem;}
+.subcat-chip{padding:.5rem 1.1rem; border-radius:999px; background:var(--beige); font-size:.74rem; letter-spacing:.04em; color:var(--ink-soft); transition:all .25s; border:1px solid transparent;}
+.subcat-chip.active, .subcat-chip:hover{background:var(--ink); color:#fff;}
+
+/* product modal */
+.modal-overlay{position:fixed; inset:0; background:rgba(58,46,39,.6); z-index:800; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .3s; padding:3vh 4vw;}
+.modal-overlay.show{opacity:1; pointer-events:auto;}
+.modal{background:var(--ivory); border-radius:24px; max-width:920px; width:100%; max-height:92vh; overflow-y:auto; display:grid; grid-template-columns:1fr 1fr; box-shadow:var(--shadow); position:relative;}
+.modal-close{position:absolute; top:1.2rem; right:1.2rem; width:36px; height:36px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; z-index:3; box-shadow:var(--shadow-soft);}
+.modal-media{position:relative; aspect-ratio:3/4;}
+.modal-media img{width:100%; height:100%; object-fit:cover;}
+.modal-info{padding:2.4rem 2.2rem; display:flex; flex-direction:column;}
+.modal-info .badge-row{position:static; margin-bottom:1rem;}
+.modal-info h2{font-family:var(--display); font-size:1.7rem; margin-bottom:.5rem;}
+.modal-info .price-row{margin:1rem 0;}
+.modal-info .price{font-size:1.5rem;}
+.modal-long{font-size:.88rem; color:var(--ink-soft); margin:1rem 0 1.4rem; line-height:1.7;}
+.modal-meta{font-size:.75rem; color:var(--taupe); margin-bottom:1.2rem;}
+.modal-actions{display:flex; gap:.8rem; margin-top:auto;}
+.affiliate-note{margin-top:1.2rem; font-size:.7rem; color:var(--taupe); border-top:1px solid var(--line); padding-top:1rem;}
+
+/* page views */
+.view{display:none;}
+.view.active{display:block; animation:fadeIn .5s ease;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(8px);}to{opacity:1; transform:translateY(0);}}
+
+/* legal page */
+.legal-page{max-width:760px; margin:0 auto; padding:4rem 0 6rem;}
+.legal-page h1{font-family:var(--display); font-size:2.2rem; margin-bottom:1.5rem;}
+.legal-page h3{font-family:var(--display); font-size:1.2rem; margin:1.8rem 0 .6rem;}
+.legal-page p{color:var(--ink-soft); margin-bottom:.9rem; font-size:.92rem;}
+
+@media(max-width:1100px){
+  .cat-grid{grid-template-columns:repeat(3,1fr);}
+  .product-grid{grid-template-columns:repeat(3,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr; row-gap:2.5rem;}
+}
+@media(max-width:860px){
+  nav.main-links{display:none;}
+  .hamburger{display:flex; width:38px; height:38px; align-items:center; justify-content:center; border:1px solid var(--line); border-radius:50%;}
+  .hero{grid-template-columns:1fr; padding-top:3rem;}
+  .hero-visual{order:-1;}
+  .cat-grid{grid-template-columns:repeat(2,1fr);}
+  .product-grid{grid-template-columns:repeat(2,1fr);}
+  .blog-grid, .testi-grid{grid-template-columns:1fr;}
+  .modal{grid-template-columns:1fr;}
+  .modal-media{aspect-ratio:4/3;}
+}
+@media(max-width:520px){
+  .cat-grid{grid-template-columns:1fr 1fr;}
+  .product-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="loader"><div class="loader-mark">VelvetMuse</div><div class="loader-line"></div></div>
+
+<div class="utility-bar">✦ As an Amazon Associate, VelvetMuse earns from qualifying purchases — see our <a href="#" onclick="goView('disclosure');return false;" style="text-decoration:underline;">Affiliate Disclosure</a> ✦</div>
+
+<header id="siteHeader">
+  <div class="nav">
+    <div class="logo" onclick="goView('home')">
+      <div class="logo-mark">V</div>
+      <div class="logo-text">Velvet<span>Muse</span></div>
+    </div>
+    <nav class="main-links">
+      <button onclick="openCategory('Outfits')">Outfits</button>
+      <button onclick="openCategory('Accessories')">Accessories</button>
+      <button onclick="openCategory('Makeup')">Makeup</button>
+      <button onclick="openCategory('Skincare')">Skincare</button>
+      <button onclick="openCategory('Shoes')">Shoes</button>
+      <button onclick="openCategory('Press-On Nails')">Nails</button>
+      <button onclick="openCategory(\"Women's Essentials\")">Essentials</button>
+      <button onclick="goView('blog')">Journal</button>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="openSearch()" title="Search">⌕</button>
+      <button class="icon-btn" onclick="toggleWishlistView()" title="Wishlist">♡<span class="cart-count" id="wishCount" style="display:none;">0</span></button>
+      <button class="icon-btn hamburger" onclick="toggleMobileNav()">☰</button>
+    </div>
+  </div>
+  <nav class="main-links" id="mobileNav" style="display:none; flex-direction:column; padding:0 6vw 1.2rem; gap:1rem;">
+    <button onclick="openCategory('Outfits')">Outfits</button>
+    <button onclick="openCategory('Accessories')">Accessories</button>
+    <button onclick="openCategory('Makeup')">Makeup</button>
+    <button onclick="openCategory('Skincare')">Skincare</button>
+    <button onclick="openCategory('Shoes')">Shoes</button>
+    <button onclick="openCategory('Press-On Nails')">Press-On Nails</button>
+    <button onclick="openCategory(\"Women's Essentials\")">Essentials</button>
+    <button onclick="goView('blog')">Journal</button>
+  </nav>
+</header>
+
+<div class="breadcrumb" id="breadcrumb" style="display:none;"></div>
+
+<main id="appRoot"></main>
+
+<button class="totop" id="totop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<div class="search-overlay" id="searchOverlay">
+  <span class="search-close" onclick="closeSearch()">✕</span>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search old money, gold jewelry, press-on nails…" oninput="runSearch(this.value)">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<div class="cookie" id="cookieBar">
+  <p>VelvetMuse uses cookies to keep your wishlist and personalize your edit. By browsing, you agree to our use of cookies.</p>
+  <button class="btn btn-primary" onclick="acceptCookies()">Accept &amp; Continue</button>
+</div>
+
+<script>
+/* ============ DATA ============ */
+const CATEGORIES = {
+  "Outfits": {
+    icon:"👗", img:"https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=60",
+    subs:["Old Money","Quiet Luxury","Summer Chic","Parisian Style","Office Wear","Casual Everyday","Date Night","Vacation Looks","Winter Fashion","Spring Fashion","Fall Fashion","Capsule Wardrobe","Minimal Fashion","Neutral Looks","Matching Sets","Maxi Dresses","Mini Dresses","Formal Wear","Lounge Wear","Party Wear"]
+  },
+  "Accessories": {
+    icon:"💍", img:"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=60",
+    subs:["Jewelry","Necklaces","Bracelets","Rings","Earrings","Pearls","Gold Jewelry","Silver Jewelry","Luxury Inspired Jewelry","Hair Accessories","Belts","Scarves","Sunglasses","Watches","Phone Accessories","Fashion Accessories"]
+  },
+  "Makeup": {
+    icon:"💄", img:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&q=60",
+    subs:["Foundation","Concealer","Blush","Bronzer","Highlighter","Lipstick","Lip Gloss","Lip Oil","Mascara","Eyeshadow","Eyeliner","Brows","Makeup Brushes","Makeup Bags","Beauty Tools"]
+  },
+  "Skincare": {
+    icon:"🌿", img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&q=60",
+    subs:["Cleanser","Moisturizer","Serum","Toner","Sunscreen","Face Masks","Eye Cream","Lip Care","Night Routine","Morning Routine","Acne Care","Hydration","Anti Aging","Body Care","Self Care"]
+  },
+  "Shoes": {
+    icon:"👠", img:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=60",
+    subs:["Heels","Sneakers","Flats","Sandals","Boots","Loafers","Mules","Slippers","Luxury Inspired","Wedding Shoes","Running Shoes","Summer Shoes"]
+  },
+  "Press-On Nails": {
+    icon:"💅", img:"https://images.unsplash.com/photo-1604902396830-aca29e19b067?w=600&q=60",
+    subs:["French Tips","Minimal","Luxury","Wedding","Short Nails","Long Nails","Summer","Winter","Chrome","Glazed","Neutral","Pink Collection"]
+  },
+  "Women's Essentials": {
+    icon:"🎀", img:"https://images.unsplash.com/photo-1591561954557-26941169b49e?w=600&q=60",
+    subs:["Bags","Wallets","Travel Essentials","Home Decor","Bedroom Decor","Desk Accessories","Organization","Water Bottles","Fitness","Wellness","Gift Ideas","Lifestyle","Amazon Finds","Best Sellers","Trending Products"]
+  }
+};
+
+const ADJ = ["Velvet","Gilded","Whisper","Ivory","Heirloom","Linen","Blush","Satin","Champagne","Marble","Dewy","Featherlight","Timeless","Atelier","Cloud","Pearl","Honey","Sculpted","Soft-Focus","Wildflower"];
+
+/* Curated, topically-relevant image pools — keyed by category so every product
+   shows a photo that actually matches what it is (heels show heels, makeup shows makeup, etc). */
+const CATEGORY_IMAGE_POOL = {
+  "Dresses": [
+    "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=70",
+    "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&q=70",
+    "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=70",
+    "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=600&q=70",
+    "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600&q=70",
+    "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&q=70"
+  ],
+  "Accessories": [
+    "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=70",
+    "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=70",
+    "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=70",
+    "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=70",
+    "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&q=70",
+    "https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?w=600&q=70"
+  ],
+  "Makeup": [
+    "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&q=70",
+    "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=70",
+    "https://images.unsplash.com/photo-1583241800698-9c2e0c1e9e6b?w=600&q=70",
+    "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&q=70",
+    "https://images.unsplash.com/photo-1631214524115-7e34ea7e1f49?w=600&q=70",
+    "https://images.unsplash.com/photo-1631730486572-226d1f595b68?w=600&q=70"
+  ],
+  "Skincare": [
+    "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&q=70",
+    "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=600&q=70",
+    "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=70",
+    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=70",
+    "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600&q=70",
+    "https://images.unsplash.com/photo-1598440947619-2c35bc9430c3?w=600&q=70"
+  ],
+  "Shoes": [
+    "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=70",
+    "https://images.unsplash.com/photo-1543163521-aebf6cb84c47?w=600&q=70",
+    "https://images.unsplash.com/photo-1518049362265-d5b2a6467637?w=600&q=70",
+    "https://images.unsplash.com/photo-1554062614-6da4fa67725a?w=600&q=70",
+    "https://images.unsplash.com/photo-1562273138-f46be4ebdf33?w=600&q=70",
+    "https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=600&q=70"
+  ],
+  "Press-On Nails": [
+    "https://images.unsplash.com/photo-1604902396830-aca29e19b067?w=600&q=70",
+    "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=70",
+    "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=600&q=70",
+    "https://images.unsplash.com/photo-1632344004534-8c4b1b6f5c3e?w=600&q=70",
+    "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=600&q=70",
+    "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=600&q=70"
+  ],
+  "Women's Essentials": [
+    "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=600&q=70",
+    "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&q=70",
+    "https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?w=600&q=70",
+    "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&q=70",
+    "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=600&q=70",
+    "https://images.unsplash.com/photo-1572584642822-6f8de0243c93?w=600&q=70"
+  ]
+};
+const BADGES_POOL = ["sale","discount","bestseller","trending","editors","luxury","new"];
+const BADGE_LABEL = {sale:"Sale", discount:"-20%", bestseller:"Best Seller", trending:"Trending", editors:"Editor's Pick", luxury:"Luxury Pick", new:"New Arrival"};
+
+function seedRandom(seed){ let s = seed; return function(){ s = (s*9301+49297)%233280; return s/233280; }; }
+
+function buildProducts(){
+  let id=1; const list=[];
+  Object.entries(CATEGORIES).forEach(([cat,data])=>{
+    data.subs.forEach((sub,si)=>{
+      const count = 2 + (si%2);
+      for(let i=0;i<count;i++){
+        const rnd = seedRandom(id*17+si*3+i);
+        const adj = ADJ[Math.floor(rnd()*ADJ.length)];
+        const price = (12 + Math.floor(rnd()*68));
+        const hasOld = rnd()>0.5;
+        const oldPrice = hasOld ? (price + Math.floor(rnd()*20)+5) : null;
+        const badges=[];
+        const shuffled=[...BADGES_POOL].sort(()=>rnd()-0.5);
+        const numBadges = 1+Math.floor(rnd()*2);
+        for(let b=0;b<numBadges;b++) badges.push(shuffled[b]);
+        if(hasOld && !badges.includes("sale")) badges.push("sale");
+        const pool = CATEGORY_IMAGE_POOL[cat] || CATEGORY_IMAGE_POOL["Women's Essentials"];
+        const imgIndex = (si + i) % pool.length;
+        list.push({
+          id:id++,
+          title:`${adj} ${sub}`,
+          category:cat,
+          subcategory:sub,
+          shortDesc:`A ${sub.toLowerCase()} essential, styled for the VelvetMuse edit.`,
+          longDesc:`This ${sub.toLowerCase()} piece brings together the quiet-luxury details our edit lives for — soft texture, considered proportions, and a finish that photographs beautifully on Pinterest. Pictured here as part of our ${cat} collection, it pairs effortlessly with neutrals, gold accents, and timeless silhouettes. Placeholder description for demonstration only; replace with verified product copy before publishing live affiliate content.`,
+          price: price.toFixed(2),
+          oldPrice: oldPrice ? oldPrice.toFixed(2) : null,
+          badges,
+          img: pool[imgIndex]
+        });
+      }
+    });
+  });
+  return list;
+}
+const PRODUCTS = buildProducts();
+
+const BLOG_POSTS = [
+  {title:"Old Money Outfit Ideas That Never Go Out of Style", cat:"Outfits", excerpt:"Tailored neutrals, heirloom gold and the quiet confidence of dressing well — our edit of old money essentials.", img:"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=700&q=70", date:"June 2026"},
+  {title:"The Best Summer Dresses for a Pinterest-Worthy Wardrobe", cat:"Outfits", excerpt:"Linen, lace and the prettiest silhouettes for warm-weather dressing, curated for the edit.", img:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=700&q=70", date:"June 2026"},
+  {title:"Luxury-Look Amazon Finds Under $50", cat:"Essentials", excerpt:"Designer-inspired pieces that feel expensive without the price tag — our most-saved finds.", img:"https://images.unsplash.com/photo-1591561954557-26941169b49e?w=700&q=70", date:"May 2026"},
+  {title:"A Minimal Jewelry Guide for Everyday Elegance", cat:"Accessories", excerpt:"Gold layering, pearl staples and the case for owning less, but better.", img:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=700&q=70", date:"May 2026"},
+  {title:"Best Sneakers for Women Who Love a Quiet Luxury Look", cat:"Shoes", excerpt:"Clean leather, soft neutrals — sneakers that work as hard as your wardrobe does.", img:"https://images.unsplash.com/photo-1518049362265-d5b2a6467637?w=700&q=70", date:"April 2026"},
+  {title:"The Capsule Wardrobe Guide We Keep Coming Back To", cat:"Outfits", excerpt:"Twenty pieces, endless outfits — building a wardrobe that never feels cluttered.", img:"https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=700&q=70", date:"April 2026"},
+  {title:"A Skincare Routine for Soft, Dewy Skin", cat:"Skincare", excerpt:"Morning to night, the steps our editors swear by for a lit-from-within glow.", img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=700&q=70", date:"March 2026"},
+  {title:"Press-On Nail Trends We're Saving Right Now", cat:"Press-On Nails", excerpt:"Chrome, glazed and the French tip reinvented — nail inspiration for every mood.", img:"https://images.unsplash.com/photo-1604902396830-aca29e19b067?w=700&q=70", date:"March 2026"},
+  {title:"Thoughtful Gift Ideas for the Women in Your Life", cat:"Essentials", excerpt:"From self-care to statement jewelry, an edit of gifts that feel personal.", img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=700&q=70", date:"February 2026"},
+  {title:"Parisian Fashion, Decoded", cat:"Outfits", excerpt:"Effortless tailoring, a signature scarf, and the art of looking unbothered.", img:"https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=700&q=70", date:"February 2026"}
+];
+
+let wishlist = new Set();
+let currentCat=null, currentSub=null, currentSort="popularity";
+
+/* ============ HELPERS ============ */
+function badgeHTML(list){
+  return `<div class="badge-row">${list.map(b=>`<span class="badge ${b}">${BADGE_LABEL[b]}</span>`).join("")}</div>`;
+}
+function productCard(p){
+  const wished = wishlist.has(p.id);
+  return `
+  <div class="product-card" onclick="openModal(${p.id})">
+    <div class="product-media">
+      ${badgeHTML(p.badges)}
+      <button class="wish-btn ${wished?'active':''}" onclick="event.stopPropagation(); toggleWish(${p.id})">${wished?'♥':'♡'}</button>
+      <img src="${p.img}" alt="${p.title}" loading="lazy">
+      <div class="pin-save">📌 Save</div>
+    </div>
+    <div class="product-info">
+      <div class="product-cat">${p.subcategory}</div>
+      <div class="product-title">${p.title}</div>
+      <div class="product-desc">${p.shortDesc}</div>
+      <div class="price-row"><span class="price">$${p.price}</span>${p.oldPrice?`<span class="price-old">$${p.oldPrice}</span>`:''}</div>
+      <div class="shop-btn" onclick="event.stopPropagation(); openModal(${p.id})">View Product</div>
+    </div>
+  </div>`;
+}
+function productGrid(list, cols=4){
+  if(!list.length) return `<p style="text-align:center; color:var(--ink-soft); font-family:var(--serif); font-style:italic; padding:3rem 0;">No products found in this edit yet.</p>`;
+  return `<div class="product-grid ${cols===3?'cols-3':''}">${list.map(productCard).join("")}</div>`;
+}
+function sortProducts(list, mode){
+  const arr=[...list];
+  if(mode==="price-low") arr.sort((a,b)=>a.price-b.price);
+  else if(mode==="price-high") arr.sort((a,b)=>b.price-a.price);
+  else if(mode==="discount") arr.sort((a,b)=>(b.oldPrice?b.oldPrice-b.price:0)-(a.oldPrice?a.oldPrice-a.price:0));
+  else if(mode==="new") arr.sort((a,b)=>b.id-a.id);
+  else if(mode==="trending") arr.sort((a,b)=>(b.badges.includes('trending')?1:0)-(a.badges.includes('trending')?1:0));
+  return arr;
+}
+
+/* ============ VIEWS ============ */
+function renderHome(){
+  const trending = PRODUCTS.filter(p=>p.badges.includes("trending")).slice(0,8);
+  const bestsellers = PRODUCTS.filter(p=>p.badges.includes("bestseller")).slice(0,8);
+  const editors = PRODUCTS.filter(p=>p.badges.includes("editors")).slice(0,4);
+  const luxury = PRODUCTS.filter(p=>p.badges.includes("luxury")).slice(0,4);
+
+  return `
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">A Quiet Luxury Edit</div>
+      <h1>Soft elegance,<br>curated for <em>your</em> aesthetic.</h1>
+      <p>VelvetMuse is a Pinterest-born edit of fashion, beauty and lifestyle finds — old money outfits, gilded jewelry, and the quiet luxury staples worth saving.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="openCategory('Outfits')">Shop the Edit</button>
+        <button class="btn btn-outline" onclick="goView('blog')">Read the Journal</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="tile tall"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=700&q=70" alt="Editorial fashion look"></div>
+      <div class="tile short"><img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=700&q=70" alt="Gold jewelry flatlay"></div>
+      <div class="tile short"><img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=700&q=70" alt="Skincare and beauty products"></div>
+    </div>
+  </section>
+
+  <div class="marquee"><div class="marquee-track">
+    <span>OLD MONEY</span><span>·</span><span>QUIET LUXURY</span><span>·</span><span>PARISIAN STYLE</span><span>·</span><span>GOLD JEWELRY</span><span>·</span><span>PRESS-ON NAILS</span><span>·</span><span>AMAZON FINDS</span><span>·</span>
+    <span>OLD MONEY</span><span>·</span><span>QUIET LUXURY</span><span>·</span><span>PARISIAN STYLE</span><span>·</span><span>GOLD JEWELRY</span><span>·</span><span>PRESS-ON NAILS</span><span>·</span><span>AMAZON FINDS</span><span>·</span>
+  </div></div>
+
+  <section class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Shop by Category</div>
+      <h2 class="section-title">Featured Collections</h2>
+      <p class="section-sub">Seven worlds of the VelvetMuse edit, each with its own soft point of view.</p>
+    </div>
+    <div class="cat-grid">
+      ${Object.entries(CATEGORIES).map(([name,d])=>`
+        <div class="cat-card" onclick="openCategory('${name.replace("'","\\'")}')">
+          <img src="${d.img}" alt="${name}">
+          <div class="overlay"></div>
+          <div class="label"><div class="name">${name}</div><div class="count">${d.subs.length} Edits</div></div>
+        </div>`).join("")}
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Right Now</div>
+      <h2 class="section-title">Trending on the Edit</h2>
+      <p class="section-sub">What our Pinterest community is saving most this week.</p>
+    </div>
+    ${productGrid(trending)}
+  </section>
+
+  <section class="tight"><div class="cta-banner">
+    <div class="eyebrow">Seasonal Collection</div>
+    <h2>Summer Chic, Fully Edited</h2>
+    <p>Linen sets, gold layering and the warm-weather staples worth saving to your boards.</p>
+    <button class="btn btn-primary" onclick="openSub('Outfits','Summer Chic')">Shop Summer Chic</button>
+  </div></section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Most Loved</div>
+      <h2 class="section-title">Best Sellers</h2>
+      <p class="section-sub">The pieces our community returns to again and again.</p>
+    </div>
+    ${productGrid(bestsellers)}
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Hand-Picked</div>
+      <h2 class="section-title">Editor's Picks &amp; Luxury Finds</h2>
+      <p class="section-sub">A small, considered edit chosen by the VelvetMuse team.</p>
+    </div>
+    <div class="tab-row">
+      <button class="tab active" onclick="switchPicksTab(this,'editors')">Editor's Picks</button>
+      <button class="tab" onclick="switchPicksTab(this,'luxury')">Luxury Picks</button>
+    </div>
+    <div id="picksGrid">${productGrid(editors)}</div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">From the Journal</div>
+      <h2 class="section-title">Latest Articles &amp; Buying Guides</h2>
+      <p class="section-sub">Style notes, edits and inspiration from the VelvetMuse journal.</p>
+    </div>
+    <div class="blog-grid">${BLOG_POSTS.slice(0,3).map(blogCard).join("")}</div>
+    <div style="text-align:center; margin-top:2.5rem;"><button class="btn btn-outline" onclick="goView('blog')">View All Articles</button></div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Follow Along</div>
+      <h2 class="section-title">Pinterest Inspiration</h2>
+      <p class="section-sub">Our most-saved boards, brought straight to the homepage.</p>
+    </div>
+    <div class="cat-grid">
+      ${["https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=500&q=70","https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&q=70","https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&q=70","https://images.unsplash.com/photo-1591561954557-26941169b49e?w=500&q=70"].map((src,idx)=>`<div class="cat-card" style="aspect-ratio:3/4.6;">
+        <img src="${src}" alt="Pinterest inspiration">
+        <div class="overlay"></div>
+        <div class="label"><div class="name" style="font-size:1rem;">Board Edit 0${idx+1}</div></div>
+      </div>`).join("")}
+    </div>
+    <div style="text-align:center; margin-top:2.2rem;"><button class="btn btn-primary">📌 Follow VelvetMuse on Pinterest</button></div>
+  </section>
+
+  <section class="tight wrap">
+    <div class="section-head">
+      <div class="eyebrow">Loved By Our Readers</div>
+      <h2 class="section-title">Testimonials</h2>
+    </div>
+    <div class="testi-grid">
+      ${[
+        {n:"Margaux L.",r:"Pinterest Follower",t:"Every board feels curated, not cluttered. I save more from VelvetMuse than anywhere else."},
+        {n:"Sofia R.",r:"Returning Reader",t:"The old money edit changed how I shop completely — soft neutrals, gold accents, timeless."},
+        {n:"Elena K.",r:"Style Enthusiast",t:"It feels like flipping through a luxury magazine, but everything is actually shoppable."}
+      ].map(t=>`<div class="testi-card"><div class="stars">★★★★★</div><div class="testi-text">"${t.t}"</div><div class="testi-name">${t.n}</div><div class="testi-role">${t.r}</div></div>`).join("")}
+    </div>
+  </section>
+
+  <section class="wrap" style="max-width:760px;">
+    <div class="section-head">
+      <div class="eyebrow">Good to Know</div>
+      <h2 class="section-title">FAQ</h2>
+    </div>
+    <div id="faqList">
+      ${[
+        ["Are these real Amazon products?","This is a demonstration layout populated with placeholder products and royalty-free imagery. Live affiliate links and verified product data will be added before launch, in line with Amazon Associates policies."],
+        ["How does VelvetMuse make money?","VelvetMuse participates in the Amazon Associates program and may earn a commission on qualifying purchases made through links on this site, at no extra cost to you."],
+        ["Can I save items to Pinterest directly?","Yes — every product and article includes a Pinterest-friendly vertical image and a save button for easy pinning."],
+        ["How often is the edit updated?","New finds, seasonal collections and journal articles are added regularly to keep the edit feeling fresh."]
+      ].map(([q,a])=>`<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>${q}</span><span class="plus">+</span></div><div class="faq-a">${a}</div></div>`).join("")}
+    </div>
+  </section>
+
+  <section class="tight"><div class="newsletter">
+    <div class="eyebrow" style="color:var(--gold-light);">Join the Edit</div>
+    <h2>Get first access to new finds</h2>
+    <p class="section-sub">Soft luxury, delivered weekly — outfits, beauty and Amazon finds worth saving.</p>
+    <form class="nl-form" onsubmit="event.preventDefault(); alert('Thank you for joining the VelvetMuse edit.'); this.reset();">
+      <input type="email" placeholder="Your email address" required>
+      <button class="btn btn-primary" type="submit">Subscribe</button>
+    </form>
+  </div></section>
+  `;
+}
+function switchPicksTab(btn,mode){
+  document.querySelectorAll('#appRoot .tab-row .tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  const list = PRODUCTS.filter(p=>p.badges.includes(mode)).slice(0,4);
+  document.getElementById('picksGrid').innerHTML = productGrid(list);
+}
+
+function blogCard(post){
+  return `<div class="blog-card" onclick="alert('Full article view coming soon — this is a layout demonstration.')">
+    <div class="blog-media"><img src="${post.img}" alt="${post.title}"></div>
+    <div class="blog-info">
+      <div class="blog-cat">${post.cat}</div>
+      <div class="blog-title">${post.title}</div>
+      <div class="blog-excerpt">${post.excerpt}</div>
+      <div class="blog-meta">${post.date} · Buying Guide</div>
+    </div>
+  </div>`;
+}
+
+function renderBlog(){
+  return `
+  <section class="wrap" style="padding-top:3.5rem;">
+    <div class="section-head">
+      <div class="eyebrow">The Journal</div>
+      <h2 class="section-title">Fashion &amp; Lifestyle Articles</h2>
+      <p class="section-sub">Style notes, buying guides and edits from the VelvetMuse team.</p>
+    </div>
+    <div class="blog-grid">${BLOG_POSTS.map(blogCard).join("")}</div>
+  </section>`;
+}
+
+function renderCategory(catName){
+  const data = CATEGORIES[catName];
+  if(!data) return `<p class="wrap">Category not found.</p>`;
+  if(!currentSub || !data.subs.includes(currentSub)) currentSub = "All";
+  let list = PRODUCTS.filter(p=>p.category===catName);
+  if(currentSub!=="All") list = list.filter(p=>p.subcategory===currentSub);
+  list = sortProducts(list, currentSort);
+
+  return `
+  <section class="wrap" style="padding-top:2.5rem;">
+    <div class="section-head" style="margin-bottom:2.2rem;">
+      <div class="eyebrow">Category</div>
+      <h2 class="section-title">${catName}</h2>
+      <p class="section-sub">${data.subs.length} curated edits, ${PRODUCTS.filter(p=>p.category===catName).length} pieces and counting.</p>
+    </div>
+    <div class="subcat-chip-row">
+      <span class="subcat-chip ${currentSub==='All'?'active':''}" onclick="openSub('${catName.replace("'","\\'")}','All')">All</span>
+      ${data.subs.map(s=>`<span class="subcat-chip ${currentSub===s?'active':''}" onclick="openSub('${catName.replace("'","\\'")}','${s.replace("'","\\'")}')">${s}</span>`).join("")}
+    </div>
+    <div class="filter-bar">
+      <span style="font-size:.78rem; color:var(--ink-soft);">${list.length} products</span>
+      <select onchange="currentSort=this.value; rerenderCategory('${catName.replace("'","\\'")}');">
+        <option value="popularity" ${currentSort==='popularity'?'selected':''}>Sort by Popularity</option>
+        <option value="price-low" ${currentSort==='price-low'?'selected':''}>Price: Low to High</option>
+        <option value="price-high" ${currentSort==='price-high'?'selected':''}>Price: High to Low</option>
+        <option value="discount" ${currentSort==='discount'?'selected':''}>Sort by Discount</option>
+        <option value="new" ${currentSort==='new'?'selected':''}>Newest</option>
+        <option value="trending" ${currentSort==='trending'?'selected':''}>Trending</option>
+      </select>
+    </div>
+    ${productGrid(list)}
+  </section>`;
+}
+function rerenderCategory(cat){ document.getElementById('appRoot').innerHTML = renderCategory(cat); updateBreadcrumb(); }
+
+function renderWishlist(){
+  const list = PRODUCTS.filter(p=>wishlist.has(p.id));
+  return `
+  <section class="wrap" style="padding-top:3.5rem;">
+    <div class="section-head">
+      <div class="eyebrow">Saved by You</div>
+      <h2 class="section-title">Your Wishlist</h2>
+      <p class="section-sub">${list.length ? "Pieces you've saved from the edit." : "Nothing saved yet — tap the heart on any product to add it here."}</p>
+    </div>
+    ${productGrid(list)}
+  </section>`;
+}
+
+function renderDisclosure(){
+  return `<section class="wrap"><div class="legal-page">
+    <div class="eyebrow">Legal</div>
+    <h1>Affiliate Disclosure</h1>
+    <p>VelvetMuse is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com.</p>
+    <h3>What this means for you</h3>
+    <p>When you click certain links on this site and make a qualifying purchase on Amazon, VelvetMuse may earn a small commission — at no additional cost to you. This helps support the time and curation that goes into the edit.</p>
+    <h3>Our commitment</h3>
+    <p>We only feature products we genuinely believe fit the VelvetMuse aesthetic. Editorial opinions, badges (such as Editor's Pick or Best Seller) and descriptions are our own and are not influenced by affiliate partnerships.</p>
+    <h3>Placeholder notice</h3>
+    <p>This demonstration site uses placeholder product information and royalty-free imagery only. No Amazon trademarks, logos or scraped content are used. Live, compliant affiliate links and verified product data will be added prior to launch in accordance with Amazon Associates Program Policies.</p>
+    <h3>Questions</h3>
+    <p>For questions about this disclosure, please reach out via our contact page.</p>
+  </div></section>`;
+}
+
+/* ============ NAV / ROUTER ============ */
+function goView(view){
+  currentCat=null; currentSub=null;
+  let html="";
+  if(view==="home") html = renderHome();
+  else if(view==="blog") html = renderBlog();
+  else if(view==="wishlist") html = renderWishlist();
+  else if(view==="disclosure") html = renderDisclosure();
+  document.getElementById('appRoot').innerHTML = html;
+  window.scrollTo({top:0,behavior:'smooth'});
+  updateBreadcrumb(view);
+  closeMobileNav();
+}
+function openCategory(cat){
+  currentCat=cat; currentSub="All"; currentSort="popularity";
+  document.getElementById('appRoot').innerHTML = renderCategory(cat);
+  window.scrollTo({top:0,behavior:'smooth'});
+  updateBreadcrumb();
+  closeMobileNav();
+}
+function openSub(cat,sub){
+  currentCat=cat; currentSub=sub;
+  document.getElementById('appRoot').innerHTML = renderCategory(cat);
+  updateBreadcrumb();
+}
+function updateBreadcrumb(view){
+  const bc = document.getElementById('breadcrumb');
+  if(currentCat){
+    bc.style.display="block";
+    bc.innerHTML = `<span onclick="goView('home')">Home</span><span class="sep">/</span><span onclick="openSub('${currentCat.replace("'","\\'")}','All')">${currentCat}</span>${currentSub&&currentSub!=='All'?`<span class="sep">/</span><span>${currentSub}</span>`:''}`;
+  } else if(view==="blog"){
+    bc.style.display="block";
+    bc.innerHTML = `<span onclick="goView('home')">Home</span><span class="sep">/</span><span>Journal</span>`;
+  } else if(view==="wishlist"){
+    bc.style.display="block";
+    bc.innerHTML = `<span onclick="goView('home')">Home</span><span class="sep">/</span><span>Wishlist</span>`;
+  } else if(view==="disclosure"){
+    bc.style.display="block";
+    bc.innerHTML = `<span onclick="goView('home')">Home</span><span class="sep">/</span><span>Affiliate Disclosure</span>`;
+  } else { bc.style.display="none"; }
+}
+function toggleWishlistView(){ goView('wishlist'); }
+function toggleMobileNav(){ const n=document.getElementById('mobileNav'); n.style.display = n.style.display==='none' ? 'flex' : 'none'; }
+function closeMobileNav(){ document.getElementById('mobileNav').style.display='none'; }
+
+/* ============ MODAL ============ */
+function openModal(id){
+  const p = PRODUCTS.find(x=>x.id===id);
+  if(!p) return;
+  const related = PRODUCTS.filter(x=>x.subcategory===p.subcategory && x.id!==p.id).slice(0,3);
+  document.getElementById('modalContent').innerHTML = `
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-media"><img src="${p.img}" alt="${p.title}"></div>
+    <div class="modal-info">
+      ${badgeHTML(p.badges)}
+      <div class="product-cat">${p.category} · ${p.subcategory}</div>
+      <h2>${p.title}</h2>
+      <div class="price-row"><span class="price">$${p.price}</span>${p.oldPrice?`<span class="price-old">$${p.oldPrice}</span>`:''}</div>
+      <p class="modal-long">${p.longDesc}</p>
+      <div class="modal-meta">Category: ${p.category} &nbsp;·&nbsp; Subcategory: ${p.subcategory} &nbsp;·&nbsp; Item #VM-${String(p.id).padStart(4,'0')}</div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" style="flex:1; justify-content:center;" onclick="alert('Amazon affiliate link placeholder — connect your Associates link here.')">Shop on Amazon</button>
+        <button class="icon-btn" onclick="toggleWish(${p.id}); openModal(${p.id});">${wishlist.has(p.id)?'♥':'♡'}</button>
+        <button class="icon-btn" style="background:#E60023; color:#fff;" title="Save to Pinterest">📌</button>
+      </div>
+      <div class="affiliate-note">As an Amazon Associate, VelvetMuse earns from qualifying purchases. Product information and image are placeholders for demonstration.</div>
+      ${related.length?`<div style="margin-top:1.6rem;"><div class="eyebrow" style="margin-bottom:.8rem;">You May Also Like</div><div style="display:flex; gap:.7rem;">${related.map(r=>`<img src="${r.img}" style="width:60px; height:78px; object-fit:cover; border-radius:8px; cursor:pointer;" onclick="openModal(${r.id})">`).join("")}</div></div>`:''}
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('show');
+}
+function closeModal(){ document.getElementById('modalOverlay').classList.remove('show'); }
+
+/* ============ WISHLIST ============ */
+function toggleWish(id){
+  if(wishlist.has(id)) wishlist.delete(id); else wishlist.add(id);
+  const c = document.getElementById('wishCount');
+  c.textContent = wishlist.size;
+  c.style.display = wishlist.size ? 'flex' : 'none';
+  // refresh current view if it shows this product
+  if(currentCat) document.getElementById('appRoot').innerHTML = renderCategory(currentCat);
+}
+
+/* ============ SEARCH ============ */
+function openSearch(){ document.getElementById('searchOverlay').classList.add('show'); document.getElementById('searchInput').focus(); }
+function closeSearch(){ document.getElementById('searchOverlay').classList.remove('show'); document.getElementById('searchInput').value=''; document.getElementById('searchResults').innerHTML=''; }
+function runSearch(q){
+  const res = document.getElementById('searchResults');
+  if(!q || q.length<2){ res.innerHTML=''; return; }
+  const ql = q.toLowerCase();
+  const matches = PRODUCTS.filter(p=>p.title.toLowerCase().includes(ql) || p.subcategory.toLowerCase().includes(ql) || p.category.toLowerCase().includes(ql)).slice(0,8);
+  res.innerHTML = matches.length ? matches.map(p=>`
+    <div class="search-result-item" onclick="closeSearch(); openModal(${p.id});">
+      <img src="${p.img}" alt="">
+      <div><div class="sr-title">${p.title}</div><div class="sr-cat">${p.category} · ${p.subcategory}</div></div>
+    </div>`).join("") : `<p style="color:var(--ink-soft); font-style:italic; font-family:var(--serif); padding:1rem .5rem;">No results for "${q}"</p>`;
+}
+
+/* ============ SCROLL EFFECTS ============ */
+window.addEventListener('scroll', ()=>{
+  const header = document.getElementById('siteHeader');
+  header.classList.toggle('scrolled', window.scrollY>20);
+  document.getElementById('totop').classList.toggle('show', window.scrollY>500);
+});
+document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeModal(); closeSearch(); }});
+
+/* ============ COOKIE ============ */
+function acceptCookies(){ document.getElementById('cookieBar').classList.remove('show'); }
+setTimeout(()=>document.getElementById('cookieBar').classList.add('show'), 1800);
+
+/* ============ INIT ============ */
+window.addEventListener('load', ()=>{
+  goView('home');
+  setTimeout(()=>document.getElementById('loader').classList.add('hide'), 500);
+});
+</script>
+</body>
+</html>
